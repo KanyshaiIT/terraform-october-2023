@@ -29,3 +29,12 @@ resource "aws_instance" "web" {
 # output ec2 {
 #   value = aws_instance.web.public_ip
 # }
+# #resource "aws_instance" "web" {
+#   ami = "ami-id"
+#   instance_type = "t2.micro"
+#   availability_zone = "us-east-2c"
+
+#   tags = {
+#     Name = "HelloWorld"
+#   }
+# }
