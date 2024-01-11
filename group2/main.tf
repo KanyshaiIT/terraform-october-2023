@@ -1,5 +1,9 @@
 resource "aws_vpc" "main"  {   
   cidr_block = var.cidr_block
+
+  tags = {
+    Name = "group-2"
+  }
 }
 
 resource "aws_subnet" "main1" {
@@ -52,16 +56,3 @@ resource "aws_route_table_association" "c" {
   subnet_id      = aws_subnet.main3.id
   route_table_id = aws_route_table.example.id
 }
-
-resource "aws_instance" "group-2" {
-  ami = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
-  key_name = aws_key_pair.deployer.key_name
-  user_data = file("gitlab.sh")
-  # count = 3
-
-  tags = {
-    Name = var.name_tag
-  }
-}
-

@@ -1,28 +1,18 @@
-#!/bin/bash
+#! /bin/bash
 
 sudo apt update
-sudo apt install ca-certificates curl openssh-server postfix tzdata perl
-### You will likely have some of this software installed already. 
-###For the postfix installation, select Internet Site when prompted. 
-###On the next screen, enter your server’s domain name to configure how the system will send mail.
-
-##Now that you have the dependencies installed, you’re ready to install GitLab.
-
-
-#move into the /tmp directory:
-cd /tmp 
-
-#download the installation script:
-curl -LO https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh
-#or
-#less /tmp/script.deb.sh
-
-#run the installer
+sudo apt upgrade -y
+sudo reboot
+sudo apt install -y ca-certificates curl openssh-server postfix
+cd /tmp
+curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh
+less /tmp/script.deb.sh
 sudo bash /tmp/script.deb.sh
-#install the GitLab application
-sudo apt install gitlab-ce
-
-
-
-#open GitLab’s configuration file
-sudo vi /etc/gitlab/gitlab.rb
+sudo apt install -y gitlab-ce
+sudo ufw status
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow OpenSSH
+sudo ufw status
+sudo nano /etc/gitlab/gitlab.rb
+sudo gitlab-ctl reconfigure

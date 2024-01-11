@@ -3,13 +3,11 @@ variable region {    #what type of variable we can use
     description = "Provide region"
     default = ""   #what region  by default
 }
-
 variable cidr_block {   
     type = string
     description = "Provide cidr block"
     default = "10.0.0.0/16"
-}  
-
+}
 variable subnet1_cidr {   
     type = string
     description = "Provide cidr block"
@@ -37,7 +35,7 @@ variable "ami" {
 variable "instance_type" {
     type = string
     description = "Instance type"
-    default = "t2.micro"  
+    default = "t2.small"  
 }
 
 variable "name_tag" {
