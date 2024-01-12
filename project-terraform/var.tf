@@ -1,7 +1,6 @@
 variable region {    #what type of variable we can use
     type = string  #mandatory part
-    description = "Provide region"
-    default = "us-east-2"   #what region  by default
+    default = ""   #what region  by default if it is us-east-2, to do our code more dynamic we leave empty string
 }  
 
 variable cidr_block {   
